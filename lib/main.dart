@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 
-void main() => HomePage();
+void main() => runApp(HomePage());
 
 class HomePage extends StatelessWidget {
   @override
@@ -9,6 +9,10 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       title: "Tic Tac Toe",
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.blue,
+      ),
 
       home: Scaffold(
         appBar: AppBar(
