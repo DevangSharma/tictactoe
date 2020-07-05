@@ -7,25 +7,74 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   
-  var tile = [
-    0,0,0,0,0,0,0,0,0
-  ];
+  List<int> tile;
 
   AssetImage zero = AssetImage("images/o.png");
   AssetImage cross = AssetImage("images/x.png");
   AssetImage blank = AssetImage("images/dot.png");
+  List <AssetImage> play;
+
+  changeState(i)
+  {
+    setState(() {
+      this.tile[i] = 1;
+      this.play[i] = getimage(tile[i]);
+    });
+  }
+
+  AssetImage getimage(i)
+  {
+      switch(i)
+      {
+        case 0:
+          return blank;
+          break;
+
+        case 1:
+          return cross;
+          break;
+
+        case 2:
+          return zero;
+          break;
+      }
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    setState(() {
+      this.tile = [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0, 
+      ];
+      play = [
+        blank,
+        blank,
+        blank,
+        blank,
+        blank,
+        blank,
+        blank,
+        blank,
+        blank,
+      ];});
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
               
@@ -42,8 +91,10 @@ class _HomeState extends State<Home> {
                     height: 10.0,
                     width: 10.0,
                     child: MaterialButton(
-                      onPressed: () {},
-                      child: Image(image: blank),
+                      child: Image(image: play[i]),
+                      onPressed: (){
+                        changeState(i);
+                      },
                       ),
                   ),
         
