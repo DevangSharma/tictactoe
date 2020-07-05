@@ -7,6 +7,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   
+  int boolToInt(bool a) => a ? 1 : 0;
+
   List<int> tile;
 
   AssetImage zero = AssetImage("images/o.png");
@@ -14,11 +16,15 @@ class _HomeState extends State<Home> {
   AssetImage blank = AssetImage("images/dot.png");
   List <AssetImage> play;
 
+  bool zeroTurn = false;
+
   changeState(i)
   {
     setState(() {
-      this.tile[i] = 1;
-      this.play[i] = getimage(tile[i]);
+     tile[i] = boolToInt(zeroTurn) + 1;
+     play[i] = getimage(tile[i]);
+    
+     zeroTurn = !zeroTurn;
     });
   }
 
@@ -42,10 +48,10 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     setState(() {
-      this.tile = [
+      tile = [
         0,
         0,
         0,
@@ -55,7 +61,9 @@ class _HomeState extends State<Home> {
         0,
         0,
         0, 
+
       ];
+
       play = [
         blank,
         blank,
@@ -97,10 +105,9 @@ class _HomeState extends State<Home> {
                       },
                       ),
                   ),
-        
 
                 itemCount: 9,
-              
+
             ),
           )
       ],
