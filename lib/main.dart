@@ -15,6 +15,9 @@ class HomePage extends StatelessWidget {
 
       home: Scaffold(
         appBar: AppBar(
+          leading: Icon(Icons.menu,
+          color: Colors.white,
+          ),
           title: Center(
             child: Text("Tic Tac Toe",
             style: TextStyle(
