@@ -10,13 +10,20 @@ class HomePage extends StatelessWidget {
       title: "Tic Tac Toe",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        accentColor: Colors.blue,
+        primaryColor: Color(0xFF191919),
       ),
 
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Tic Tac Toe"),
+          title: Center(
+            child: Text("Tic Tac Toe",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30.0,
+              fontFamily: 'chalk',
+              ),),
+            ),
+          brightness: Brightness.dark,
         ),
         body: Home(),
       ),
